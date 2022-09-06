@@ -1,4 +1,5 @@
 ﻿using ArmorModifiers.Modifiers;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
@@ -39,7 +40,7 @@ namespace ArmorModifiers.GlobalItems
         {
             if (IsArmorPiece(item))
             {
-                reforgePrice *= 10;
+                reforgePrice = (int)MathF.Round(reforgePrice * ServerConfig.reforgeCostMultiplier, 0, MidpointRounding.ToEven);
                 canApplyDiscount = true;
                 return true;
             }

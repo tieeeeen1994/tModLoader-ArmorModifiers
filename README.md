@@ -21,6 +21,8 @@ This mod adds unique armor modifiers. They're not a lot, but they are super expe
 - Overlord: Increases minion slots by 1.
 - Medicated: Increases life regeneration by 1.
 
+Reforge cost multiplier is configurable.
+
 # Changelog
 
 v0.1
