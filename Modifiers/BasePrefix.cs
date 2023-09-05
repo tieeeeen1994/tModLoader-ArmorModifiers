@@ -6,13 +6,10 @@ namespace ArmorModifiers.Modifiers
 {
     public abstract class BasePrefix : ModPrefix
     {
-        protected abstract string PrefixName { get; }
-
         public override PrefixCategory Category => PrefixCategory.Custom;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(PrefixName);
             armorPrefixes.Add(Type);
         }
 

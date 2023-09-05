@@ -1,0 +1,70 @@
+Prefixes: {
+	AttackSpeed.DisplayName: Turbo
+	AttackSpeed2.DisplayName: Hot
+	BadAttackSpeed.DisplayName: Loose
+	BadAttackSpeed2.DisplayName: Rickety
+	BadCritical.DisplayName: Sloppy
+	BadCritical2.DisplayName: Thoughtless
+	BadHealth.DisplayName: Fragile
+	BadMinions.DisplayName: Commoner
+	BadRegen.DisplayName: Siphoned
+	Critical.DisplayName: Meticulous
+	Critical2.DisplayName: Thorough
+	Health.DisplayName: Healthy
+	Minions.DisplayName: Overlord
+	Regen.DisplayName: Medicated
+}
+
+Configs: {
+	ServerConfig: {
+		DisplayName: Server Config
+
+		reforgeCostMultiplier: {
+			Label: Base Cost Armor Reforging Multiplier
+			Tooltip: The reforge cost to be multiplied for Armor.
+		}
+
+		minionIncrease: {
+			Label: Minion Slot Modifier Bonus
+			Tooltip:
+				'''
+				The bonus given by the modifier. Negative modifier counterpart is inversed from this value.
+				The total final value from the modifiers are rounded off.
+				e.g. 1.8 total bonus results in a +2 bonus slots.
+				'''
+		}
+
+		healthIncrease: {
+			Label: Health Modifier Bonus
+			Tooltip: The bonus given by the modifier. Negative modifier counterpart is inversed from this value.
+		}
+
+		critIncrease: {
+			Label: Critical Damage Modifier Bonus
+			Tooltip:
+				'''
+				The bonus given by the modifier. Negative modifier counterpart is inversed from this value.
+				The Tier 2 modifier will get double the value of this.
+				'''
+		}
+
+		regenIncrease: {
+			Label: Health Regeneration Modifier Bonus
+			Tooltip:
+				'''
+				The bonus given by the modifier. Negative modifier counterpart is inversed from this value.
+				The total final value from the modifiers are rounded off.
+				e.g. 0.6 total bonus results in a +1 bonus regen.
+				'''
+		}
+
+		attackSpeedIncrease: {
+			Label: Attack Speed Modifier Bonus
+			Tooltip:
+				'''
+				The bonus given by the modifier. Negative modifier counterpart is inversed from this value.
+				The Tier 2 modifier will get double the value of this.
+				'''
+		}
+	}
+}

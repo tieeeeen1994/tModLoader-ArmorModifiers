@@ -2,6 +2,5 @@
 {
     public class Health : PositivePrefix
     {
-        protected override string PrefixName { get; } = "Healthy";
     }
 }

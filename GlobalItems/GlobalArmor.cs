@@ -19,20 +19,20 @@ namespace ArmorModifiers.GlobalItems
         {
             if (!IsArmorPiece(item)) return;
 
-            if (item.prefix == ModContent.PrefixType<Minions>()) ModArmorPlayer(player).extraMinions += minionIncrease;
-            if (item.prefix == ModContent.PrefixType<BadMinions>()) ModArmorPlayer(player).extraMinions -= minionIncrease;
-            if (item.prefix == ModContent.PrefixType<Health>()) ModArmorPlayer(player).extraLife += healthIncrease;
-            if (item.prefix == ModContent.PrefixType<BadHealth>()) ModArmorPlayer(player).extraLife -= healthIncrease;
-            if (item.prefix == ModContent.PrefixType<Critical>()) ModArmorPlayer(player).extraCritDamage += critIncrease * 2;
-            if (item.prefix == ModContent.PrefixType<BadCritical>()) ModArmorPlayer(player).extraCritDamage -= critIncrease * 2;
-            if (item.prefix == ModContent.PrefixType<Regen>()) ModArmorPlayer(player).extraRegen += regenIncrease;
-            if (item.prefix == ModContent.PrefixType<BadRegen>()) ModArmorPlayer(player).extraRegen -= regenIncrease;
-            if (item.prefix == ModContent.PrefixType<AttackSpeed>()) ModArmorPlayer(player).extraAttackSpeed += attackSpeedIncrease * 2;
-            if (item.prefix == ModContent.PrefixType<BadAttackSpeed>()) ModArmorPlayer(player).extraAttackSpeed -= attackSpeedIncrease * 2;
-            if (item.prefix == ModContent.PrefixType<AttackSpeed2>()) ModArmorPlayer(player).extraAttackSpeed += attackSpeedIncrease;
-            if (item.prefix == ModContent.PrefixType<BadAttackSpeed2>()) ModArmorPlayer(player).extraAttackSpeed -= attackSpeedIncrease;
-            if (item.prefix == ModContent.PrefixType<Critical2>()) ModArmorPlayer(player).extraCritDamage += critIncrease;
-            if (item.prefix == ModContent.PrefixType<BadCritical2>()) ModArmorPlayer(player).extraCritDamage -= critIncrease;
+            if (item.prefix == ModContent.PrefixType<Minions>()) ModArmorPlayer(player).extraMinions += ServerConfig.minionIncrease;
+            if (item.prefix == ModContent.PrefixType<BadMinions>()) ModArmorPlayer(player).extraMinions -= ServerConfig.minionIncrease;
+            if (item.prefix == ModContent.PrefixType<Health>()) ModArmorPlayer(player).extraLife += ServerConfig.healthIncrease;
+            if (item.prefix == ModContent.PrefixType<BadHealth>()) ModArmorPlayer(player).extraLife -= ServerConfig.healthIncrease;
+            if (item.prefix == ModContent.PrefixType<Critical>()) ModArmorPlayer(player).extraCritDamage += ServerConfig.critIncrease * 2;
+            if (item.prefix == ModContent.PrefixType<BadCritical>()) ModArmorPlayer(player).extraCritDamage -= ServerConfig.critIncrease * 2;
+            if (item.prefix == ModContent.PrefixType<Regen>()) ModArmorPlayer(player).extraRegen += ServerConfig.regenIncrease;
+            if (item.prefix == ModContent.PrefixType<BadRegen>()) ModArmorPlayer(player).extraRegen -= ServerConfig.regenIncrease;
+            if (item.prefix == ModContent.PrefixType<AttackSpeed>()) ModArmorPlayer(player).extraAttackSpeed += ServerConfig.attackSpeedIncrease * 2;
+            if (item.prefix == ModContent.PrefixType<BadAttackSpeed>()) ModArmorPlayer(player).extraAttackSpeed -= ServerConfig.attackSpeedIncrease * 2;
+            if (item.prefix == ModContent.PrefixType<AttackSpeed2>()) ModArmorPlayer(player).extraAttackSpeed += ServerConfig.attackSpeedIncrease;
+            if (item.prefix == ModContent.PrefixType<BadAttackSpeed2>()) ModArmorPlayer(player).extraAttackSpeed -= ServerConfig.attackSpeedIncrease;
+            if (item.prefix == ModContent.PrefixType<Critical2>()) ModArmorPlayer(player).extraCritDamage += ServerConfig.critIncrease;
+            if (item.prefix == ModContent.PrefixType<BadCritical2>()) ModArmorPlayer(player).extraCritDamage -= ServerConfig.critIncrease;
 
         }
 
@@ -59,31 +59,33 @@ namespace ArmorModifiers.GlobalItems
             return base.PrefixChance(item, pre, rand);
         }
 
+
         public override int ChoosePrefix(Item item, UnifiedRandom rand)
         {
             if (IsArmorPiece(item)) return armorPrefixes[rand.Next(armorPrefixes.Count)];
 
-            return ChoosePrefix(item, rand);
+            return base.ChoosePrefix(item, rand);
+            //return ModContent.PrefixType<AttackSpeed2>();
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (!IsArmorPiece(item)) return;
 
-            InsertPrefixTooltips<Minions>(item, tooltips, $"+{minionIncrease} minion slot");
-            InsertPrefixTooltips<Health>(item, tooltips, $"+{healthIncrease} max life");
-            InsertPrefixTooltips<Critical>(item, tooltips, $"+{critIncrease * 2 * 100}% critical effectiveness");
-            InsertPrefixTooltips<Regen>(item, tooltips, $"+{regenIncrease} life regeneration");
-            InsertPrefixTooltips<BadHealth>(item, tooltips, $"-{healthIncrease} max life");
-            InsertPrefixTooltips<BadCritical>(item, tooltips, $"-{critIncrease * 2 * 100}% critical effectiveness");
-            InsertPrefixTooltips<BadMinions>(item, tooltips, $"-{minionIncrease} minion slot");
-            InsertPrefixTooltips<BadRegen>(item, tooltips, $"-{regenIncrease} life regeneration");
-            InsertPrefixTooltips<AttackSpeed>(item, tooltips, $"+{attackSpeedIncrease * 2 * 100}% attack speed");
-            InsertPrefixTooltips<BadAttackSpeed>(item, tooltips, $"-{attackSpeedIncrease * 2 * 100}% attack speed");
-            InsertPrefixTooltips<Critical2>(item, tooltips, $"+{critIncrease * 100}% critical effectiveness");
-            InsertPrefixTooltips<BadCritical2>(item, tooltips, $"-{critIncrease * 100}% critical effectiveness");
-            InsertPrefixTooltips<AttackSpeed2>(item, tooltips, $"+{attackSpeedIncrease * 100}% attack speed");
-            InsertPrefixTooltips<BadAttackSpeed2>(item, tooltips, $"-{attackSpeedIncrease * 100}% attack speed");
+            InsertPrefixTooltips<Minions>(item, tooltips, $"+{ServerConfig.minionIncrease} minion slot");
+            InsertPrefixTooltips<Health>(item, tooltips, $"+{ServerConfig.healthIncrease} max life");
+            InsertPrefixTooltips<Critical>(item, tooltips, $"+{ServerConfig.critIncrease * 2 * 100}% critical effectiveness");
+            InsertPrefixTooltips<Regen>(item, tooltips, $"+{ServerConfig.regenIncrease} life regeneration");
+            InsertPrefixTooltips<BadHealth>(item, tooltips, $"-{ServerConfig.healthIncrease} max life");
+            InsertPrefixTooltips<BadCritical>(item, tooltips, $"-{ServerConfig.critIncrease * 2 * 100}% critical effectiveness");
+            InsertPrefixTooltips<BadMinions>(item, tooltips, $"-{ServerConfig.minionIncrease} minion slot");
+            InsertPrefixTooltips<BadRegen>(item, tooltips, $"-{ServerConfig.regenIncrease} life regeneration");
+            InsertPrefixTooltips<AttackSpeed>(item, tooltips, $"+{ServerConfig.attackSpeedIncrease * 2 * 100}% attack speed");
+            InsertPrefixTooltips<BadAttackSpeed>(item, tooltips, $"-{ServerConfig.attackSpeedIncrease * 2 * 100}% attack speed");
+            InsertPrefixTooltips<Critical2>(item, tooltips, $"+{ServerConfig.critIncrease * 100}% critical effectiveness");
+            InsertPrefixTooltips<BadCritical2>(item, tooltips, $"-{ServerConfig.critIncrease * 100}% critical effectiveness");
+            InsertPrefixTooltips<AttackSpeed2>(item, tooltips, $"+{ServerConfig.attackSpeedIncrease * 100}% attack speed");
+            InsertPrefixTooltips<BadAttackSpeed2>(item, tooltips, $"-{ServerConfig.attackSpeedIncrease * 100}% attack speed");
         }
 
         private bool TooltipCheck(TooltipLine tt) => (tt.Mod.Equals("Terraria") || tt.Mod.Equals(Mod.Name)) &&
@@ -98,7 +100,7 @@ namespace ArmorModifiers.GlobalItems
                 {
                     TooltipLine ttl = new TooltipLine(Mod, "ArmorPrefixTooltip", tooltip);
 
-                    if (isBad) ttl.IsModifierBad = true;
+                    if (isBad) ttl.IsModifierBad = isBad;
                     else ttl.IsModifier = true;
 
                     tooltips.Insert(index + 1, ttl);

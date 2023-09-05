@@ -7,10 +7,10 @@ namespace ArmorModifiers
 {
     public class ModArmorPlayer : ModPlayer
     {
-        public int extraMinions = 0;
+        public float extraMinions = 0f;
         public int extraLife = 0;
         public float extraCritDamage = 0f;
-        public int extraRegen = 0;
+        public float extraRegen = 0f;
         public float extraAttackSpeed = 0f;
 
         public override void ResetEffects()
@@ -25,10 +25,10 @@ namespace ArmorModifiers
 
         public override void UpdateEquips()
         {
-            Player.maxMinions += extraMinions;
+            Player.maxMinions += RoundOff(extraMinions);
             Player.maxMinions = Math.Max(0, Player.maxMinions);
             Player.statLifeMax += extraLife;
-            Player.lifeRegen += extraRegen;
+            Player.lifeRegen += RoundOff(extraRegen);
             Player.GetAttackSpeed(DamageClass.Generic) += extraAttackSpeed;
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
         }
@@ -39,22 +39,23 @@ namespace ArmorModifiers
             if (CheckArmorValidity(Main.mouseItem)) Main.mouseItem.accessory = Main.InReforgeMenu;
         }
 
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit) => ExtraCritComputation(crit, ref damage, ref knockback);
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
 
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => ExtraCritComputation(crit, ref damage, ref knockback);
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
 
-        private void ExtraCritComputation(bool crit, ref int damage, ref float knockback)
+        private void ExtraCritComputation(ref NPC.HitModifiers modifiers)
         {
-            if (extraCritDamage > 0 && crit)
+            if (extraCritDamage != 0)
             {
-                float computedDamage = (damage / 2) * (2 + extraCritDamage);
-                damage = (int)MathF.Round(computedDamage, 0, MidpointRounding.ToEven);
-                damage = Math.Max(0, damage);
-                knockback = (knockback / 1.4f) * (1.4f + extraCritDamage);
-                knockback = Math.Max(0f, knockback);
+                modifiers.CritDamage += extraCritDamage;
             }
         }
 
         private bool CheckArmorValidity(Item item) => !item.IsAir && IsArmorPiece(item);
+
+        private int RoundOff(float value)
+        {
+            return (int)MathF.Round(value, 0, MidpointRounding.ToEven);
+        }
     }
 }
