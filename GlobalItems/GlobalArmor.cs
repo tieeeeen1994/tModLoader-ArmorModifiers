@@ -1,4 +1,5 @@
 ﻿using ArmorModifiers.Modifiers;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -72,26 +73,26 @@ namespace ArmorModifiers.GlobalItems
         {
             if (!IsArmorPiece(item)) return;
 
-            InsertPrefixTooltips<Minions>(item, tooltips, $"+{ServerConfig.minionIncrease} minion slot");
-            InsertPrefixTooltips<Health>(item, tooltips, $"+{ServerConfig.healthIncrease} max life");
-            InsertPrefixTooltips<Critical>(item, tooltips, $"+{ServerConfig.critIncrease * 2 * 100}% critical effectiveness");
-            InsertPrefixTooltips<Regen>(item, tooltips, $"+{ServerConfig.regenIncrease} life regeneration");
-            InsertPrefixTooltips<BadHealth>(item, tooltips, $"-{ServerConfig.healthIncrease} max life");
-            InsertPrefixTooltips<BadCritical>(item, tooltips, $"-{ServerConfig.critIncrease * 2 * 100}% critical effectiveness");
-            InsertPrefixTooltips<BadMinions>(item, tooltips, $"-{ServerConfig.minionIncrease} minion slot");
-            InsertPrefixTooltips<BadRegen>(item, tooltips, $"-{ServerConfig.regenIncrease} life regeneration");
-            InsertPrefixTooltips<AttackSpeed>(item, tooltips, $"+{ServerConfig.attackSpeedIncrease * 2 * 100}% attack speed");
-            InsertPrefixTooltips<BadAttackSpeed>(item, tooltips, $"-{ServerConfig.attackSpeedIncrease * 2 * 100}% attack speed");
-            InsertPrefixTooltips<Critical2>(item, tooltips, $"+{ServerConfig.critIncrease * 100}% critical effectiveness");
-            InsertPrefixTooltips<BadCritical2>(item, tooltips, $"-{ServerConfig.critIncrease * 100}% critical effectiveness");
-            InsertPrefixTooltips<AttackSpeed2>(item, tooltips, $"+{ServerConfig.attackSpeedIncrease * 100}% attack speed");
-            InsertPrefixTooltips<BadAttackSpeed2>(item, tooltips, $"-{ServerConfig.attackSpeedIncrease * 100}% attack speed");
+            InsertPrefixTooltips<Minions>(item, tooltips, $"+{ServerConfig.minionIncrease} minion slot", false);
+            InsertPrefixTooltips<Health>(item, tooltips, $"+{ServerConfig.healthIncrease} max life", false);
+            InsertPrefixTooltips<Critical>(item, tooltips, $"+{ServerConfig.critIncrease * 2 * 100}% critical effectiveness", false);
+            InsertPrefixTooltips<Regen>(item, tooltips, $"+{ServerConfig.regenIncrease} life regeneration", false);
+            InsertPrefixTooltips<BadHealth>(item, tooltips, $"-{ServerConfig.healthIncrease} max life", true);
+            InsertPrefixTooltips<BadCritical>(item, tooltips, $"-{ServerConfig.critIncrease * 2 * 100}% critical effectiveness", true);
+            InsertPrefixTooltips<BadMinions>(item, tooltips, $"-{ServerConfig.minionIncrease} minion slot", true);
+            InsertPrefixTooltips<BadRegen>(item, tooltips, $"-{ServerConfig.regenIncrease} life regeneration", true);
+            InsertPrefixTooltips<AttackSpeed>(item, tooltips, $"+{ServerConfig.attackSpeedIncrease * 2 * 100}% attack speed", false);
+            InsertPrefixTooltips<BadAttackSpeed>(item, tooltips, $"-{ServerConfig.attackSpeedIncrease * 2 * 100}% attack speed", true);
+            InsertPrefixTooltips<Critical2>(item, tooltips, $"+{ServerConfig.critIncrease * 100}% critical effectiveness", false);
+            InsertPrefixTooltips<BadCritical2>(item, tooltips, $"-{ServerConfig.critIncrease * 100}% critical effectiveness", true);
+            InsertPrefixTooltips<AttackSpeed2>(item, tooltips, $"+{ServerConfig.attackSpeedIncrease * 100}% attack speed", false);
+            InsertPrefixTooltips<BadAttackSpeed2>(item, tooltips, $"-{ServerConfig.attackSpeedIncrease * 100}% attack speed", true);
         }
 
         private bool TooltipCheck(TooltipLine tt) => (tt.Mod.Equals("Terraria") || tt.Mod.Equals(Mod.Name)) &&
                                                      (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable"));
 
-        private void InsertPrefixTooltips<T>(Item item, List<TooltipLine> tooltips, string tooltip, bool isBad = false) where T : ModPrefix
+        private void InsertPrefixTooltips<T>(Item item, List<TooltipLine> tooltips, string tooltip, bool isBad) where T : ModPrefix
         {
             if (item.prefix == ModContent.PrefixType<T>())
             {
@@ -100,7 +101,11 @@ namespace ArmorModifiers.GlobalItems
                 {
                     TooltipLine ttl = new TooltipLine(Mod, "ArmorPrefixTooltip", tooltip);
 
-                    if (isBad) ttl.IsModifierBad = isBad;
+                    if (isBad)
+                    {
+                        ttl.IsModifierBad = true;
+                        ttl.OverrideColor = new Color(255, 150, 150);
+                    }
                     else ttl.IsModifier = true;
 
                     tooltips.Insert(index + 1, ttl);
