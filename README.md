@@ -1,6 +1,6 @@
 ﻿# Summary
 
-This mod adds unique armor modifiers. They're not a lot, but they are super expensive to reforge. Reforing armor has different rules than what weapons or accessories have.
+This mod adds unique armor modifiers. They're not a lot, but they are super expensive to reforge. Reforging armor has different rules than what weapons or accessories have.
 
 1. Armor will never get a modifier in any way except by reforging with the Goblin Tinkerer.
 2. The base cost for reforging armor is 10 times its own value.
@@ -23,7 +23,15 @@ This mod adds unique armor modifiers. They're not a lot, but they are super expe
 
 Reforge cost multiplier is configurable.
 
+The stats adjustment for each prefix are now also configurable.
+
 # Changelog
+
+v2.0
+- Mod update to 1.4.4.
+- Add configuration for prefix stats adjustment.
+- Fix configuration for reforge cost multiplier.
+- Improve jank code to be more reliable.
 
 v0.1
 - Initial release.

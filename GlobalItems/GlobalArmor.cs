@@ -65,7 +65,6 @@ namespace ArmorModifiers.GlobalItems
             if (IsArmorPiece(item)) return armorPrefixes[rand.Next(armorPrefixes.Count)];
 
             return base.ChoosePrefix(item, rand);
-            //return ModContent.PrefixType<AttackSpeed2>();
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

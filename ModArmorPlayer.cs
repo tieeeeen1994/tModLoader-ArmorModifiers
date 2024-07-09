@@ -27,7 +27,7 @@ namespace ArmorModifiers
         {
             Player.maxMinions += RoundOff(extraMinions);
             Player.maxMinions = Math.Max(0, Player.maxMinions);
-            Player.statLifeMax += extraLife;
+            Player.statLifeMax2 += extraLife;
             Player.lifeRegen += RoundOff(extraRegen);
             Player.GetAttackSpeed(DamageClass.Generic) += extraAttackSpeed;
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
