@@ -33,12 +33,6 @@ namespace ArmorModifiers
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
         }
 
-        public override void PostUpdate()
-        {
-            if (CheckArmorValidity(Main.HoverItem)) Main.HoverItem.accessory = Main.InReforgeMenu;
-            if (CheckArmorValidity(Main.mouseItem)) Main.mouseItem.accessory = Main.InReforgeMenu;
-        }
-
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);

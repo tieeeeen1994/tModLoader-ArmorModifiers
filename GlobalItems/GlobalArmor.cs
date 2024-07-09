@@ -48,7 +48,7 @@ namespace ArmorModifiers.GlobalItems
 
             return base.ReforgePrice(item, ref reforgePrice, ref canApplyDiscount);
         }
-
+        
         public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
         {
             if (IsArmorPiece(item))
@@ -59,8 +59,7 @@ namespace ArmorModifiers.GlobalItems
 
             return base.PrefixChance(item, pre, rand);
         }
-
-
+        
         public override int ChoosePrefix(Item item, UnifiedRandom rand)
         {
             if (IsArmorPiece(item)) return armorPrefixes[rand.Next(armorPrefixes.Count)];
@@ -90,7 +89,8 @@ namespace ArmorModifiers.GlobalItems
         }
 
         private bool TooltipCheck(TooltipLine tt) => (tt.Mod.Equals("Terraria") || tt.Mod.Equals(Mod.Name)) &&
-                                                     (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable"));
+                                                     (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") ||
+                                                      tt.Name.Equals("Defense") || tt.Name.Equals("Equipable"));
 
         private void InsertPrefixTooltips<T>(Item item, List<TooltipLine> tooltips, string tooltip, bool isBad) where T : ModPrefix
         {

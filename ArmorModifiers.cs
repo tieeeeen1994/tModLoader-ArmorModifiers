@@ -1,7 +1,9 @@
 using ArmorModifiers.Configs;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace ArmorModifiers
 {
@@ -17,12 +19,19 @@ namespace ArmorModifiers
 
 		public override void Load()
 		{
-            armorPrefixes = new() { };
+            armorPrefixes = [];
+            On_Item.CanHavePrefixes += Item_CanHavePrefixes;
         }
 
         public override void Unload()
         {
             armorPrefixes = null;
+            On_Item.CanHavePrefixes -= Item_CanHavePrefixes;
+        }
+
+        private bool Item_CanHavePrefixes(On_Item.orig_CanHavePrefixes orig, Item self)
+        {
+            return orig(self) || (self.type != ItemID.None && self.maxStack == 1 && IsArmorPiece(self));
         }
     }
 }
