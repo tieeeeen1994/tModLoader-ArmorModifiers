@@ -12,7 +12,7 @@ namespace ArmorModifiers.Modifiers
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(PrefixName);
+            // DisplayName.SetDefault(PrefixName);
             armorPrefixes.Add(Type);
         }
 

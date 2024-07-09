@@ -39,20 +39,14 @@ namespace ArmorModifiers
             if (CheckArmorValidity(Main.mouseItem)) Main.mouseItem.accessory = Main.InReforgeMenu;
         }
 
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit) => ExtraCritComputation(crit, ref damage, ref knockback);
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
 
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => ExtraCritComputation(crit, ref damage, ref knockback);
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
 
-        private void ExtraCritComputation(bool crit, ref int damage, ref float knockback)
+        private void ExtraCritComputation(ref NPC.HitModifiers modifiers)
         {
-            if (extraCritDamage > 0 && crit)
-            {
-                float computedDamage = (damage / 2) * (2 + extraCritDamage);
-                damage = (int)MathF.Round(computedDamage, 0, MidpointRounding.ToEven);
-                damage = Math.Max(0, damage);
-                knockback = (knockback / 1.4f) * (1.4f + extraCritDamage);
-                knockback = Math.Max(0f, knockback);
-            }
+            modifiers.CritDamage += extraCritDamage;
+            modifiers.Knockback = (modifiers.Knockback / 1.4f) * (1.4f + extraCritDamage);
         }
 
         private bool CheckArmorValidity(Item item) => !item.IsAir && IsArmorPiece(item);

@@ -1,0 +1,27 @@
+Prefixes: {
+	AttackSpeed.DisplayName: Attack Speed
+	AttackSpeed2.DisplayName: Attack Speed2
+	BadAttackSpeed.DisplayName: Bad Attack Speed
+	BadAttackSpeed2.DisplayName: Bad Attack Speed2
+	BadCritical.DisplayName: Bad Critical
+	BadCritical2.DisplayName: Bad Critical2
+	BadHealth.DisplayName: Bad Health
+	BadMinions.DisplayName: Bad Minions
+	BadRegen.DisplayName: Bad Regen
+	Critical.DisplayName: Critical
+	Critical2.DisplayName: Critical2
+	Health.DisplayName: Health
+	Minions.DisplayName: Minions
+	Regen.DisplayName: Regen
+}
+
+Configs: {
+	ServerConfig: {
+		DisplayName: Server Config
+
+		reforgeCostMultiplier: {
+			Label: Base Cost Armor Reforging Multiplier
+			Tooltip: The reforge cost to be multiplied for Armor.
+		}
+	}
+}
