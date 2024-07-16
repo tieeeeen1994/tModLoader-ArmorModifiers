@@ -15,8 +15,8 @@ namespace ArmorModifiers
 
         public override void ResetEffects()
         {
+            Player.statLifeMax2 += extraLife;
             extraMinions = 0;
-            Player.statLifeMax2 -= extraLife;
             extraLife = 0;
             extraCritDamage = 0f;
             extraRegen = 0;
@@ -28,7 +28,6 @@ namespace ArmorModifiers
         {
             Player.maxMinions += RoundOff(extraMinions);
             Player.maxMinions = Math.Max(0, Player.maxMinions);
-            Player.statLifeMax2 += extraLife;
             Player.GetAttackSpeed(DamageClass.Generic) += extraAttackSpeed;
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
             Player.whipRangeMultiplier += extraWhipRange;
@@ -50,9 +49,15 @@ namespace ArmorModifiers
             }
         }
 
-        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            ExtraCritComputation(ref modifiers);
+        }
 
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            ExtraCritComputation(ref modifiers);
+        }
 
         private void ExtraCritComputation(ref NPC.HitModifiers modifiers)
         {
