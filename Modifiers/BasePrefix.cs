@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ModLoader;
 using static ArmorModifiers.ArmorModifiers;
 
@@ -16,5 +17,7 @@ namespace ArmorModifiers.Modifiers
         public override bool CanRoll(Item item) => IsArmorPiece(item);
 
         public override float RollChance(Item item) => 1f;
+
+        public static Action<Item, Player> lol;
     }
 }

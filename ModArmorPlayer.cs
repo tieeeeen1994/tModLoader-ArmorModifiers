@@ -1,7 +1,6 @@
 ﻿using System;
 using Terraria;
 using Terraria.ModLoader;
-using static ArmorModifiers.ArmorModifiers;
 
 namespace ArmorModifiers
 {
@@ -12,15 +11,17 @@ namespace ArmorModifiers
         public float extraCritDamage = 0f;
         public float extraRegen = 0f;
         public float extraAttackSpeed = 0f;
+        public float extraWhipRange = 0f;
 
         public override void ResetEffects()
         {
             extraMinions = 0;
-            Player.statLifeMax -= extraLife;
+            Player.statLifeMax2 -= extraLife;
             extraLife = 0;
             extraCritDamage = 0f;
             extraRegen = 0;
             extraAttackSpeed = 0f;
+            extraWhipRange = 0f;
         }
 
         public override void UpdateEquips()
@@ -28,9 +29,25 @@ namespace ArmorModifiers
             Player.maxMinions += RoundOff(extraMinions);
             Player.maxMinions = Math.Max(0, Player.maxMinions);
             Player.statLifeMax2 += extraLife;
-            Player.lifeRegen += RoundOff(extraRegen);
             Player.GetAttackSpeed(DamageClass.Generic) += extraAttackSpeed;
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
+            Player.whipRangeMultiplier += extraWhipRange;
+        }
+
+        public override void UpdateLifeRegen()
+        {
+            if (extraRegen > 0)
+            {
+                Player.lifeRegen += RoundOff(extraRegen);
+            }
+        }
+
+        public override void UpdateBadLifeRegen()
+        {
+            if (extraRegen < 0)
+            {
+                Player.lifeRegen += RoundOff(extraRegen);
+            }
         }
 
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => ExtraCritComputation(ref modifiers);
@@ -40,14 +57,8 @@ namespace ArmorModifiers
         private void ExtraCritComputation(ref NPC.HitModifiers modifiers)
         {
             modifiers.CritDamage += extraCritDamage;
-            modifiers.Knockback = (modifiers.Knockback / 1.4f) * (1.4f + extraCritDamage);
         }
 
-        private bool CheckArmorValidity(Item item) => !item.IsAir && IsArmorPiece(item);
-
-        private int RoundOff(float value)
-        {
-            return (int)MathF.Round(value, 0, MidpointRounding.ToEven);
-        }
+        private int RoundOff(float value) => (int)MathF.Round(value, 0, MidpointRounding.ToEven);
     }
 }

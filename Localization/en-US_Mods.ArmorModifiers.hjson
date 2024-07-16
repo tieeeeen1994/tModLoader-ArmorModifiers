@@ -13,6 +13,16 @@ Prefixes: {
 	Health.DisplayName: Healthy
 	Minions.DisplayName: Overlord
 	Regen.DisplayName: Medicated
+	BadHealth2.DisplayName: Bad Health2
+	BadMinions2.DisplayName: Bad Minions2
+	BadRegen2.DisplayName: Bad Regen2
+	BadWhip.DisplayName: Bad Whip
+	BadWhip2.DisplayName: Bad Whip2
+	Health2.DisplayName: Health2
+	Minions2.DisplayName: Minions2
+	Regen2.DisplayName: Regen2
+	Whip.DisplayName: Whip
+	Whip2.DisplayName: Whip2
 }
 
 Configs: {
@@ -65,6 +75,11 @@ Configs: {
 				The bonus given by the modifier. Negative modifier counterpart is inversed from this value.
 				The Tier 2 modifier will get double the value of this.
 				'''
+		}
+
+		whipRangeIncrease: {
+			Label: whip Range Increase
+			Tooltip: ""
 		}
 	}
 }
