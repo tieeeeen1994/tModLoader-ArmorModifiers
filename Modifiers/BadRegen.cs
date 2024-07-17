@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class BadRegen : NegativePrefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.regenToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraRegen -= ServerConfig.regenIncrease * 2;

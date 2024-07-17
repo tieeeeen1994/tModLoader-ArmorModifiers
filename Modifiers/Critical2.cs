@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class Critical2 : Positive2Prefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.critToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraCritDamage += ServerConfig.critIncrease;

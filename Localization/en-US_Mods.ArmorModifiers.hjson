@@ -85,5 +85,41 @@ Configs: {
 				The Tier 2 modifier will get double the value of this.
 				'''
 		}
+
+		Headers: {
+			Basic: Basic Header
+			PrefixAdjustments: Prefix Adjustments Header
+			PrefixToggle: Prefix Toggle Header
+		}
+
+		minionToggle: {
+			Label: minion Toggle
+			Tooltip: ""
+		}
+
+		healthToggle: {
+			Label: health Toggle
+			Tooltip: ""
+		}
+
+		critToggle: {
+			Label: crit Toggle
+			Tooltip: ""
+		}
+
+		regenToggle: {
+			Label: regen Toggle
+			Tooltip: ""
+		}
+
+		attackSpeedToggle: {
+			Label: attack Speed Toggle
+			Tooltip: ""
+		}
+
+		whipRangeToggle: {
+			Label: whip Range Toggle
+			Tooltip: ""
+		}
 	}
 }

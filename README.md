@@ -19,6 +19,13 @@ The stats adjustment for each prefix are now also configurable.
 
 # Changelog
 
+v2.2
+- Refactor jank code.
+- The refactoring fixed multitude of issues with the armor modifiers.
+- Properly implemented health increase modifiers as a result.
+- Changed default config for each for balancing purposes.
+- Added the ability to disable prefixes through the configuration.
+
 v2.1
 - Fix issue regarding health modifiers being buggy.
 - All modifiers now have 2 tiers.

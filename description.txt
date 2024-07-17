@@ -17,10 +17,17 @@ The stats adjustment for each prefix are now also configurable.
 
 Changelogs:
 
+v2.2
+- Refactor jank code.
+- The refactoring fixed multitude of issues with the armor modifiers.
+- Properly implemented health increase modifiers as a result.
+- Changed default config for each for balancing purposes.
+- Added the ability to disable prefixes through the configuration.
+
 v2.1
 - Fix issue regarding health modifiers being buggy.
 - All modifiers now have 2 tiers.
-- Add a new modifier that extends whp range.
+- Add a new modifier that extends wihp range.
 - Whip range bonuses are configurable.
 - Coming soon: Maybe add a way to disable a prefix if it's unwanted. The whip prefix was done due to a minion slot being way too a powerful choice for everything.
 

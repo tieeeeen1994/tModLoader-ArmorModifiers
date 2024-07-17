@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class BadMinions : NegativePrefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.minionToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraMinions -= ServerConfig.minionIncrease * 2;

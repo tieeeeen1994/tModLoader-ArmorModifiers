@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class BadHealth2 : Negative2Prefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.healthToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraLife -= ServerConfig.healthIncrease;

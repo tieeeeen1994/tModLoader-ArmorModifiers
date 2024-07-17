@@ -7,14 +7,16 @@ namespace ArmorModifiers.Configs
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-        [DefaultValue(10f)]
-        [Range(1f, 100f)]
+        [Header("Basic")]
+        [DefaultValue(10)]
+        [Range(1, 100)]
         [Increment(1)]
-        public float reforgeCostMultiplier;
+        public int reforgeCostMultiplier;
 
-        [DefaultValue(1f)]
-        [Range(.01f, 10f)]
-        [Increment(.01f)]
+        [Header("PrefixAdjustments")]
+        [DefaultValue(.5f)]
+        [Range(.1f, 10f)]
+        [Increment(.1f)]
         public float minionIncrease;
 
         [DefaultValue(20)]
@@ -27,12 +29,12 @@ namespace ArmorModifiers.Configs
         [Increment(.01f)]
         public float critIncrease;
 
-        [DefaultValue(1f)]
-        [Range(.01f, 10f)]
-        [Increment(.01f)]
+        [DefaultValue(.5f)]
+        [Range(.1f, 10f)]
+        [Increment(.1f)]
         public float regenIncrease;
 
-        [DefaultValue(.02f)]
+        [DefaultValue(.05f)]
         [Range(.01f, 1f)]
         [Increment(.01f)]
         public float attackSpeedIncrease;
@@ -41,5 +43,29 @@ namespace ArmorModifiers.Configs
         [Range(.01f, 1f)]
         [Increment(.01f)]
         public float whipRangeIncrease;
+
+        [Header("PrefixToggle")]
+        [DefaultValue(true)]
+        public bool minionToggle;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool healthToggle;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool critToggle;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool regenToggle;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool attackSpeedToggle;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool whipRangeToggle;
     }
 }

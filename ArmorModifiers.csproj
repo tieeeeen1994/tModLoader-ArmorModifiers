@@ -4,6 +4,7 @@
   <PropertyGroup>
     <AssemblyName>ArmorModifiers</AssemblyName>
     <LangVersion>latest</LangVersion>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>

@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class Regen2 : Positive2Prefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.regenToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraRegen += ServerConfig.regenIncrease;

@@ -19,7 +19,7 @@ namespace ArmorModifiers.GlobalItems
         {
             if (IsArmorPiece(item))
             {
-                ItemPrefix(item).UpdateEquip(item, player);
+                ItemPrefix(item)?.UpdateEquip(item, player);
             }
         }
 
@@ -57,7 +57,7 @@ namespace ArmorModifiers.GlobalItems
         {
             if (IsArmorPiece(item))
             {
-                ItemPrefix(item).ModifyTooltips(item, tooltips);
+                ItemPrefix(item)?.ModifyTooltips(item, tooltips);
             }
         }
 

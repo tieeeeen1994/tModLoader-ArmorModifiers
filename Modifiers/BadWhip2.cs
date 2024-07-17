@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class BadWhip2 : Negative2Prefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.whipRangeToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraWhipRange -= ServerConfig.whipRangeIncrease;

@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class AttackSpeed2 : Positive2Prefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.attackSpeedToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraAttackSpeed += ServerConfig.attackSpeedIncrease;

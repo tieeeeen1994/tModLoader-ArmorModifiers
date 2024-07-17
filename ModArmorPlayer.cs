@@ -15,7 +15,6 @@ namespace ArmorModifiers
 
         public override void ResetEffects()
         {
-            Player.statLifeMax2 += extraLife;
             extraMinions = 0;
             extraLife = 0;
             extraCritDamage = 0f;
@@ -31,6 +30,7 @@ namespace ArmorModifiers
             Player.GetAttackSpeed(DamageClass.Generic) += extraAttackSpeed;
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
             Player.whipRangeMultiplier += extraWhipRange;
+            Player.statLifeMax2 = Math.Max(20, Player.statLifeMax2 + extraLife);
         }
 
         public override void UpdateLifeRegen()

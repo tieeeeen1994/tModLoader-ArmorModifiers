@@ -7,6 +7,8 @@ namespace ArmorModifiers.Modifiers
 {
     public class Minions2 : Positive2Prefix
     {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.minionToggle;
+
         public override void UpdateEquip(Item item, Player player)
         {
             ModArmorPlayer(player).extraMinions += ServerConfig.minionIncrease;
