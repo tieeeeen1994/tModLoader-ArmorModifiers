@@ -87,39 +87,39 @@ Configs: {
 		}
 
 		Headers: {
-			Basic: Basic Header
-			PrefixAdjustments: Prefix Adjustments Header
-			PrefixToggle: Prefix Toggle Header
+			Basic: Basic
+			PrefixAdjustments: Prefix Tuning
+			PrefixToggle: Enable/Disable Prefix Category
 		}
 
 		minionToggle: {
-			Label: minion Toggle
-			Tooltip: ""
+			Label: Minion Slot Modifier
+			Tooltip: Enable/Disable this modifier.
 		}
 
 		healthToggle: {
-			Label: health Toggle
-			Tooltip: ""
+			Label: Health Modifier
+			Tooltip: Enable/Disable this modifier.
 		}
 
 		critToggle: {
-			Label: crit Toggle
-			Tooltip: ""
+			Label: Critical Damage Modifier
+			Tooltip: Enable/Disable this modifier.
 		}
 
 		regenToggle: {
-			Label: regen Toggle
-			Tooltip: ""
+			Label: Health Regeneration Modifier
+			Tooltip: Enable/Disable this modifier.
 		}
 
 		attackSpeedToggle: {
-			Label: attack Speed Toggle
-			Tooltip: ""
+			Label: Attack Speed Modifier
+			Tooltip: Enable/Disable this modifier.
 		}
 
 		whipRangeToggle: {
-			Label: whip Range Toggle
-			Tooltip: ""
+			Label: Whip Range Modifier
+			Tooltip: Enable/Disable this modifier.
 		}
 	}
 }

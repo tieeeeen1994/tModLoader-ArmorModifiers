@@ -30,6 +30,7 @@ namespace ArmorModifiers
             Player.GetAttackSpeed(DamageClass.Generic) += extraAttackSpeed;
             Player.GetAttackSpeed(DamageClass.Generic) = MathF.Max(.01f, Player.GetAttackSpeed(DamageClass.Generic));
             Player.whipRangeMultiplier += extraWhipRange;
+            Player.whipRangeMultiplier = MathF.Max(.01f, Player.whipRangeMultiplier);
             Player.statLifeMax2 = Math.Max(20, Player.statLifeMax2 + extraLife);
         }
 

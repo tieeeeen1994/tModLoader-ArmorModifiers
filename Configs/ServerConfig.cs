@@ -46,6 +46,7 @@ namespace ArmorModifiers.Configs
 
         [Header("PrefixToggle")]
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool minionToggle;
 
         [DefaultValue(true)]
